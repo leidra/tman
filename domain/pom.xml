@@ -6,7 +6,7 @@
 
     <artifactId>domain</artifactId>
     <parent>
-        <groupId>net.leidra</groupId>
+        <groupId>net.leidra.tman</groupId>
         <artifactId>tman</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>

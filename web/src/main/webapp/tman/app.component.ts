@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core'
-import {TaskService} from './task.service'
-import {TaskListComponent} from './tasks-list.component'
+import {TaskService} from './tasks/task.service'
+import {TaskListComponent} from './tasks/tasks-list.component'
 import {HTTP_PROVIDERS}    	from 'angular2/http';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
-import {DashboardComponent} from "./dashboard.component";
-import {TaskDetailComponent} from "./task-detail.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {TaskDetailComponent} from "./tasks/task-detail.component";
 
 @RouteConfig([
 	{
@@ -26,21 +26,11 @@ import {TaskDetailComponent} from "./task-detail.component";
 ])
 @Component({
 	selector:'tman',
-	template: `
-	<h1>{{title}}</h1>
-	<nav>
-		<a [routerLink]="['Dashboard']">Dashboard</a>
-		<a [routerLink]="['TasksList']">Tasks</a>
-	</nav>
-  	<router-outlet></router-outlet>
-  	`,
+	templateUrl: 'tman/app.component.html',
+	styleUrls: ['tman/app.component.css'],
 	directives: [ROUTER_DIRECTIVES],
 	providers:[TaskService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
 export class ApplicationComponent {
 	title = "Task Manager application"
-
-	goBack() {
-		window.history.back();
-	}
 }

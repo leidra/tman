@@ -1,9 +1,11 @@
 package net.leidra.tman.services;
 
 import net.leidra.domain.entities.Task;
-import org.springframework.ui.Model;
+import net.leidra.domain.repositories.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,12 +13,18 @@ import java.util.List;
  * Created by afuentes on 12/03/16.
  */
 @RestController
-@RequestMapping("/resources/")
+@RequestMapping("/resources/tasks")
 public class TaskService {
+    private TaskRepository repository;
+
+    @Autowired
+    public TaskService(TaskRepository repository) {
+        this.repository = repository;
+    }
 
     @CrossOrigin
-    @RequestMapping("tasks")
-    public List<Task> findTasks() {
+    @RequestMapping
+    public List<Task> findAll() {
         return Arrays.asList(
             new Task(1l, "Task 1", "Task 1 description"),
             new Task(2l, "Task 2", "Task 2 description"),
@@ -26,8 +34,24 @@ public class TaskService {
     }
 
     @CrossOrigin
-    @RequestMapping("task/{id}")
-    public Task findTask(@PathVariable Long id) {
-        return findTasks().stream().filter(t -> t.getId().equals(id)).findFirst().orElse(null);
+    @RequestMapping("/{id}")
+    public Task findOne(@PathVariable Long id) {
+        return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().orElse(null);
     }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST)
+    public Task create(@RequestBody @Valid Task task) {
+        if(task != null) {
+            if(task.getId() != null) {
+//                throw new
+            }
+
+            task = repository.save(task);
+        }
+
+        return task;
+    }
+
+
 }

@@ -5,16 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>backend</artifactId>
     <parent>
-        <groupId>net.leidra</groupId>
+        <groupId>net.leidra.tman</groupId>
         <artifactId>tman</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>net.leidra</groupId>
+            <groupId>net.leidra.tman</groupId>
             <artifactId>domain</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!--<dependency>-->
         <!--<groupId>org.springframework.data</groupId>-->

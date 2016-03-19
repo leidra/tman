@@ -6,7 +6,8 @@ import {OnInit} from "angular2/core";
 
 @Component({
 	selector : 'task-detail',
-	templateUrl : 'tman/task-detail.html',
+	templateUrl : 'tman/tasks/task-detail.component.html',
+	styleUrls:['tman/tasks/task-detail.component.css'],
 	inputs : ['task']
 })
 export class TaskDetailComponent implements OnInit{
@@ -16,8 +17,11 @@ export class TaskDetailComponent implements OnInit{
 	ngOnInit() {
 		if(this._routeParams.get('id') != null) {
 			let id = +this._routeParams.get('id');
-			this._taskService.getTask(id)
-				.subscribe(task => this.task = task);
+			this._taskService.findOne(id).subscribe(task => this.task = task);
 		}
+	}
+
+	goBack() {
+		window.history.back();
 	}
 }

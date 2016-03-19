@@ -1,0 +1,15 @@
+<h2>Task list</h2>
+<ul class="tasks">
+    <li *ngFor="#task of tasks"
+        [class.selected]="task === selectedTask"
+        (click)="onSelect(task)" class="col-1-4">
+        <span class="badge">{{task.id}}</span>{{task.name}}
+    </li>
+</ul>
+<div *ngIf="selectedTask">
+    <h2>
+        {{selectedTask.name | uppercase}}
+    </h2>
+    <p>{{selectedTask.description}}</p>
+    <button (click)="gotoDetail()">View Details</button>
+</div>

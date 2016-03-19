@@ -1,0 +1,7 @@
+<div class="grid grid-pad">
+    <div *ngFor="#task of tasks" (click)="gotoDetail(task)" class="col-1-4">
+        <div class="module task">
+            <h4>{{task.name}}</h4>
+        </div>
+    </div>
+</div>
