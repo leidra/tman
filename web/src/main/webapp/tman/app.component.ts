@@ -5,17 +5,28 @@ import {HTTP_PROVIDERS}    	from 'angular2/http';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TaskDetailComponent} from "./tasks/task-detail.component";
+import {TaskFormComponent} from "./tasks/task-form.component";
 
 @RouteConfig([
 	{
-		path: '/tasks',
+		path: '/tasks/list',
 		name: 'TasksList',
 		component: TaskListComponent
 	},
 	{
-		path: '/task/:id',
+		path: '/tasks/view/:id',
 		name: 'TaskDetail',
 		component: TaskDetailComponent
+	},
+	{
+		path: '/tasks/form/:id',
+		name: 'TaskForm',
+		component: TaskFormComponent
+	},
+	{
+		path: '/tasks/form',
+		name: 'NewTaskForm',
+		component: TaskFormComponent
 	},
 	{
 		path: '/',

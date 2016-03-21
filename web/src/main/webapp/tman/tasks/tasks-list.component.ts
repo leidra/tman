@@ -8,14 +8,13 @@ import {Router} from "angular2/router";
     selector: 'tasks-list',
     templateUrl:'tman/tasks/task-list.component.html',
     styleUrls:['tman/tasks/task-list.component.css'],
-    directives: [TaskDetailComponent],
+    directives: [TaskDetailComponent]
 })
 export class TaskListComponent implements OnInit {
     tasks:Task[];
     selectedTask:Task;
 
-    constructor(private _taskService:TaskService, private _router:Router) {
-    }
+    constructor(private _taskService:TaskService, private _router:Router) {}
 
     getTasks() {
         // Service return a promise

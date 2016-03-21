@@ -1,5 +1,4 @@
-export interface Task {
-	id:number;
-	name:string;
-	description:string;
-};
+export class Task {
+
+	constructor(public id:number, public name:string, public description:string){}
+}

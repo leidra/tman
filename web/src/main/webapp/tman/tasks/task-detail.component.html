@@ -1,15 +1,18 @@
 <div *ngIf="task">
     <h2>{{task.name}} details</h2>
+    <button (click)="edit()">Edit</button>
+    <button type="button" class="btn btn-default" (click)="new()">New</button>
     <div>
-        <label>Id: </label>{{task.id}}
+        <label>Id: </label>
+        <span>{{task.id}}</span>
     </div>
     <div>
         <label>Name: </label>
-        <input placeholder="Name" [(ngModel)]="task.name"/>
+        <span>{{task.name}}</span>
     </div>
     <div>
         <label>Description: </label>
-        <input placeholder="Description" [(ngModel)]="task.description"/>
+        <span>{{task.description}}</span>
     </div>
 </div>
 <button (click)="goBack()">Back</button>

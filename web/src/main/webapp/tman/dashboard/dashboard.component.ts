@@ -12,8 +12,7 @@ import {Router} from "angular2/router";
 export class DashboardComponent implements OnInit {
     tasks:Task[];
 
-    constructor(private _taskService:TaskService, private _router:Router) {
-    }
+    constructor(private _taskService:TaskService, private _router:Router) {}
 
     ngOnInit() {
         this._taskService.findAll().then(tasks => this.tasks = tasks.slice(0, 5));
@@ -22,4 +21,13 @@ export class DashboardComponent implements OnInit {
     gotoDetail(task:Task) {
         this._router.navigate(['TaskDetail', {id: task.id}]);
     }
+
+    new() {
+        this._router.navigate(['NewTaskForm']);
+    }
+
+    delete(id:number) {
+        this._taskService.delete(id);
+    }
+
 }

@@ -25,12 +25,7 @@ public class TaskService {
     @CrossOrigin
     @RequestMapping
     public List<Task> findAll() {
-        return Arrays.asList(
-            new Task(1l, "Task 1", "Task 1 description"),
-            new Task(2l, "Task 2", "Task 2 description"),
-            new Task(3l, "Task 3", "Task 3 description"),
-            new Task(4l, "Task 4", "Task 4 description")
-        );
+        return repository.findAll();
     }
 
     @CrossOrigin
@@ -44,7 +39,6 @@ public class TaskService {
     public Task create(@RequestBody @Valid Task task) {
         if(task != null) {
             if(task.getId() != null) {
-//                throw new
             }
 
             task = repository.save(task);
@@ -53,5 +47,16 @@ public class TaskService {
         return task;
     }
 
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.DELETE)
+    public Boolean delete(@PathVariable Long id) {
+        Boolean isRemoved = false;
+        if(id != null) {
+            repository.delete(id);
+            isRemoved = true;
+        }
+
+        return isRemoved;
+    }
 
 }

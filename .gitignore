@@ -12,7 +12,8 @@ buildNumber.properties
 mvn*
 *.iml
 node_modules/
-web/src/main/webapp/tman/*.js
+**
+/tman/**.js
 typings/
 *js.map
 *.log
