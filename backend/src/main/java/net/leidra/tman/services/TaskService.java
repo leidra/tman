@@ -5,15 +5,17 @@ import net.leidra.domain.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by afuentes on 12/03/16.
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/resources/tasks")
+@Transactional
 public class TaskService {
     private TaskRepository repository;
 
@@ -22,19 +24,16 @@ public class TaskService {
         this.repository = repository;
     }
 
-    @CrossOrigin
     @RequestMapping
     public List<Task> findAll() {
         return repository.findAll();
     }
 
-    @CrossOrigin
     @RequestMapping("/{id}")
     public Task findOne(@PathVariable Long id) {
-        return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().orElse(null);
+        return repository.findOne(id);
     }
 
-    @CrossOrigin
     @RequestMapping(method = RequestMethod.POST)
     public Task create(@RequestBody @Valid Task task) {
         if(task != null) {
@@ -47,8 +46,7 @@ public class TaskService {
         return task;
     }
 
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public Boolean delete(@PathVariable Long id) {
         Boolean isRemoved = false;
         if(id != null) {

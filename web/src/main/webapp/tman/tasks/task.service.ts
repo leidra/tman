@@ -26,9 +26,8 @@ export class TaskService {
             .catch(this.handleError);
     }
 
-    delete(id:number) {
-        this.http.delete(this._resourceUrl + id)
-            .catch(this.handleError);
+    delete(id:number) : Observable<boolean> {
+        return this.http.delete(this._resourceUrl + id).map((res:Response) => res.json());
     }
 
     save(task:Task):Promise<Task> {

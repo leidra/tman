@@ -4,7 +4,7 @@ import {TaskListComponent} from './tasks/tasks-list.component'
 import {HTTP_PROVIDERS}    	from 'angular2/http';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {TaskDetailComponent} from "./tasks/task-detail.component";
+import {TaskViewComponent} from "./tasks/task-view.component";
 import {TaskFormComponent} from "./tasks/task-form.component";
 
 @RouteConfig([
@@ -16,7 +16,7 @@ import {TaskFormComponent} from "./tasks/task-form.component";
 	{
 		path: '/tasks/view/:id',
 		name: 'TaskDetail',
-		component: TaskDetailComponent
+		component: TaskViewComponent
 	},
 	{
 		path: '/tasks/form/:id',

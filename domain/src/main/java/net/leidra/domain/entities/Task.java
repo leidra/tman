@@ -1,8 +1,6 @@
 package net.leidra.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by afuentes on 14/03/16.
@@ -14,14 +12,17 @@ public class Task {
     private Long id;
     private String name;
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Task() {
     }
 
-    public Task(Long id, String name, String description) {
-        this.id = id;
+    public Task(String name, String description, Category category) {
         this.name = name;
         this.description = description;
+        this.category = category;
     }
 
     public Long getId() {
@@ -46,5 +47,13 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

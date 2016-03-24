@@ -1,4 +1,5 @@
-export class Task {
+import {Category} from "../categories/category";
 
-	constructor(public id:number, public name:string, public description:string){}
+export class Task {
+	constructor(public id:number, public name:string, public description:string, public category:Category){}
 }

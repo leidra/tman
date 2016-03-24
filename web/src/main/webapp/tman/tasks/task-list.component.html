@@ -7,6 +7,8 @@
         <button (click)="delete(task.id)">Delete</button>
     </li>
 </ul>
+<p *ngIf="deleted">Task deleted correctly</p>
+
 <div *ngIf="selectedTask">
     <h2>{{selectedTask.name | uppercase}}</h2>
     <p>{{selectedTask.description}}</p>
